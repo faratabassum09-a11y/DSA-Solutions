@@ -1,0 +1,104 @@
+1.https://www.geeksforgeeks.org/problems/largest-element-in-array4009/1
+class Solution {
+    public static int largest(int[] arr) {
+        int largest=arr[0];
+        for(int i=1;i<arr.length;i++){
+            if(arr[i]>largest){
+                largest=arr[i];
+            }
+        }
+        return largest;
+        
+    }
+}
+
+2.[Second Largest | Practice | GeeksforGeeks](https://www.geeksforgeeks.org/problems/second-largest3735/1)
+class Solution {
+    public int getSecondLargest(int[] arr) {
+        // code here
+        int largest=arr[0];
+        int sLargest=-1;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>largest){
+                sLargest=largest;
+                largest=arr[i];
+            }else if(arr[i]<largest && arr[i]>sLargest){
+                sLargest=arr[i];
+            }else{
+                continue;
+            }
+        }
+        return sLargest;
+    }
+}
+3.https://www.geeksforgeeks.org/problems/find-the-smallest-and-second-smallest-element-in-an-array322…
+class Solution {
+    public ArrayList<Integer> minAnd2ndMin(int[] arr) {
+        // code here
+        ArrayList<Integer> ans=new ArrayList<>();
+        int smallest=arr[0];
+        int sSmallest=Integer.MAX_VALUE;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]<smallest){
+                sSmallest=smallest;
+                smallest=arr[i];
+            }else if(arr[i]!=smallest && arr[i]<sSmallest){
+                sSmallest=arr[i];
+            }
+        }
+        if(sSmallest==Integer.MAX_VALUE) ans.add(-1);
+        else{
+            ans.add(smallest);
+            ans.add(sSmallest);
+        } 
+        return ans;
+        
+    }
+}
+
+4.https://www.geeksforgeeks.org/problems/check-if-an-array-is-sorted0701/1
+class Solution {
+    public boolean isSorted(int[] arr) {
+        // code here
+        for(int i=1;i<arr.length;i++){
+            if(arr[i]<arr[i-1]){
+                return false;
+            }
+        }
+        return true;
+    }
+}
+5.[Remove Duplicates Sorted Array | Practice | GeeksforGeeks](https://www.geeksforgeeks.org/problems/remove-duplicate-elements-from-sorted-array/1)
+class Solution {
+    ArrayList<Integer> removeDuplicates(int[] arr) {
+        // code here
+        ArrayList<Integer> ans=new ArrayList<>();
+        int i=0;
+        ans.add(arr[0]);
+        
+        for(int j=1;j<arr.length;j++){
+            if(arr[j]!=arr[i]){
+                ans.add(arr[j]);
+            }
+            i++;
+        }
+        return ans;
+    }
+}
+
+https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+
+```java
+class Solution {
+    public int removeDuplicates(int[] arr) {
+        int i=0;
+        for(int j=1;j<arr.length;j++){
+            if(arr[j]!=arr[i]){
+                arr[i+1]=arr[j];
+                i++;
+            }
+        }
+        return i+1;
+    }
+}
+```
